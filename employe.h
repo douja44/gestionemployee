@@ -1,35 +1,42 @@
-#ifndef EMPLOYES_H
-#define EMPLOYES_H
+#ifndef EMPLOYE_H
+#define EMPLOYE_H
 #include <QString>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 
 
-class Employes
+class employe
 {
-public:
-    void setcin(QString n);
-    void setprenom(QString n);
-    void setnom(QString n);
-    void setemail(QString n);
-    void setmdp(QString n);
-    void setnumtel(QString n);
-    void setsalaire(QString n);
-    void setrole(QString n);
-    void setid(QString n);
-    void setdatemb(QString n);
-    QString get_cin();
-    QString get_prenom();
-    QString get_nom();
-    QString get_email();
-    QString get_mdp();
-    QString get_numtel();
-    QString get_salaire();
-    QString get_role();
-    QString get_id();
-    QString get_datemb();
 
-    Employes();
-private:
-    QString cin, prenom, nom, email, mdp, numtel, salaire, role, id,datemb;
+public:
+    employe();
+    employe(QString,QString,int,int,int,int,int);
+
+
+    QString getnom(){return nom;}
+    QString getprenom(){return prenom;}
+    int getcin(){return CIN;}
+    int getsalaire(){return salaire;}
+    int getdateE(){return dateE;}
+    int getnumT(){return numT;}
+    int getabs(){return abs;}
+    void setcin(int nvcin){CIN=nvcin;}
+    void setnom(QString n){nom=n;}
+    void setprenom(QString p){prenom=p;}
+    void setsalaire(int s){salaire=s;}
+    void setdateE(int d){dateE=d;}
+    void setnumT(int num){numT=num;}
+    void setabs(int a){abs=a;}
+    QString nom,prenom;
+    int CIN,salaire,dateE,numT,abs;
+
+
+
+    bool ajouter();
+    QSqlQueryModel * afficher();
+    bool supprimer(int);
+    
+    
 };
 
-#endif // EMPLOYES_H
+#endif // EMPLOYE_H

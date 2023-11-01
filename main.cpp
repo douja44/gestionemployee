@@ -3,13 +3,16 @@
 #include "connection.h"
 #include <QApplication>
 #include <iostream>
+#include "employe.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+    employe e;
+    qDebug();
     w.show();
-    return a.exec();
+
     Connection c;
     bool test=c.createconnect();
     if(test)
@@ -23,4 +26,5 @@ int main(int argc, char *argv[])
         QMessageBox::critical(nullptr, QObject::tr("database is not open"),
                     QObject::tr("connection failed.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
+    return a.exec();
 }
