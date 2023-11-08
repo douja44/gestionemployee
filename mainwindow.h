@@ -25,6 +25,10 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+    void on_pushButton_modifier_clicked();
+
+    void on_pushButton_pdf_clicked();
+
 private:
     Ui::MainWindow *ui;
     employe e;

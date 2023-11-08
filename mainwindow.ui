@@ -204,6 +204,19 @@
        <string>AJOUTER</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_modifier">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>270</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MODIFIER</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_consul">
      <attribute name="title">
@@ -212,11 +225,24 @@
      <widget class="QTableView" name="tableView">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>20</x>
         <y>100</y>
-        <width>371</width>
+        <width>611</width>
         <height>192</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_pdf">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>300</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EXPORT PDF</string>
       </property>
      </widget>
     </widget>
