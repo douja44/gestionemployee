@@ -1,4 +1,3 @@
-#include "employe.h"
 #include <QString>
 #include <QObject>
 #include <QDate>
@@ -8,6 +7,12 @@
 #include <QPainter>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QDebug>
+#include <QtSql/QSqlQueryModel>
+#include <QSqlError>
+
+#include "employe.h"
+
 
 employe::employe()
 {
@@ -147,6 +152,103 @@ bool employe::modifier(int CIN)
     return query.exec();
 }
 
+//*******************
+QSqlQueryModel* employe::trierParSalaire()
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+
+    // Requête pour trier par salaire du plus élevé au moins élevé
+    QString query = "SELECT * FROM employe ORDER BY salaire DESC";
+
+    model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* employe::trierParDateEmbauche()
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery("SELECT * FROM employe ORDER BY dateE DESC");
+    return model;
+}
+/*
+QSqlQueryModel *employe::rechercherParCIN(int cin)
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+        QString query = "SELECT * FROM employe WHERE CIN = :cin";
+        QSqlQuery qry;
+        qry.prepare(query);
+        qry.bindValue(":cin", cin);
+
+        if (qry.exec())
+        {
+            if (qry.next()) // Check if there is at least one row returned
+            {
+                model->setQuery(qry);
+            }
+            else
+            {
+                qDebug() << "Aucun employé trouvé avec le CIN : " << cin;
+                delete model;  // Clean up the allocated model
+                return nullptr; // Return nullptr to indicate the error
+            }
+        }
+        else
+        {
+            qDebug() << "Erreur lors de la recherche par CIN.";
+            delete model;  // Clean up the allocated model
+            return nullptr; // Return nullptr to indicate the error
+        }
+
+        return model;
+}
+*/
+
+
+void employe::rechercher(QTableView *tableView, int CIN) {
+    QSqlQueryModel *model = new QSqlQueryModel();
+    QSqlQuery query; // Pas besoin d'allouer dynamiquement ici
+
+    // Préparez la requête SQL avec la clause WHERE
+    query.prepare("SELECT * FROM employe WHERE CIN = :cin");
+    query.bindValue(":cin", CIN);
+
+    // Exécutez la requête préparée
+    if (query.exec()) {
+        // Configuration du modèle avec les résultats de la requête
+        model->setQuery(query);
+
+        if (model->rowCount() > 0) {
+            // Si des résultats sont trouvés, triez le modèle par ordre croissant sur la première colonne (0)
+            model->sort(0, Qt::AscendingOrder);
+
+            // Configuration de la vue de table avec le modèle
+            tableView->setModel(model);
+
+            // Affichage de la vue de table
+            tableView->show();
+
+            // Affichage d'un message de succès
+            QMessageBox::information(nullptr, QObject::tr("OK"),
+                                     QObject::tr("Recherche réussie.\n"
+                                                 "Click Cancel to exit."), QMessageBox::Cancel);
+        } else {
+            // Aucun résultat trouvé
+            qDebug() << "Aucun employé trouvé avec le CIN : " << CIN;
+
+            // Affichage d'un message indiquant que la recherche n'a donné aucun résultat
+            QMessageBox::information(nullptr, QObject::tr("Aucun résultat"),
+                                     QObject::tr("Aucun employé trouvé avec le CIN spécifié."), QMessageBox::Ok);
+        }
+    } else {
+        // Gestion de l'erreur de la requête SQL
+        qDebug() << "Erreur lors de la recherche par CIN : " << query.lastError().text();
+
+        // Affichage d'un message d'erreur en cas d'échec de la requête SQL
+        QMessageBox::critical(nullptr, QObject::tr("Erreur"),
+                              QObject::tr("Erreur lors de la recherche par CIN.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+}
 
 
 

@@ -1,7 +1,7 @@
 #ifndef EMPLOYE_H
 #define EMPLOYE_H
 #include <QString>
-
+#include <QTableView>
 #include <QDate>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -40,6 +40,13 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier(int);
+
+
+
+    QSqlQueryModel* trierParSalaire();
+    QSqlQueryModel* trierParDateEmbauche();
+    void rechercher(QTableView *tableView, int CIN);
+
 
     
 };

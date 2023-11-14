@@ -43,6 +43,19 @@ private slots:
 
     void on_pushButton_stat_clicked();
 
+
+
+
+
+
+    void on_comboBox_currentIndexChanged(int index);
+
+
+
+    void on_pushButton_rechcin_clicked();
+
+    void on_pushButton_raf_clicked();
+
 private:
     Ui::MainWindow *ui;
     employe e;

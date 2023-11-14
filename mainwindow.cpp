@@ -335,3 +335,87 @@ void MainWindow::revenirPageInitiale() {
     // Afficher le widget principal
     mainWidget->show();
 }
+
+
+//*********
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    // Instanciez un objet employe
+        employe e;
+
+        // Obtenez le critère de tri sélectionné
+        QString critereTri = ui->comboBox->currentText();
+
+        // Obtenez le modèle trié en fonction du critère sélectionné
+        QSqlQueryModel *modelTri;
+
+        if (critereTri == "Salaire") {
+            modelTri = e.trierParSalaire();
+        } else if (critereTri == "Date d'embauche") {
+            modelTri = e.trierParDateEmbauche();
+        } else {
+            // Gérez toute autre option ou erreur ici
+            return;
+        }
+
+        // Utilisez le modèle trié pour mettre à jour votre vue (par exemple, QTableView)
+        ui->tableView->setModel(modelTri);
+}
+
+
+/*void MainWindow::on_pushButton_rechcin_clicked()
+{
+    int cin = ui->lineEdit_rechcin->text().toInt(); // Supposons que vous avez un LineEdit pour entrer le CIN
+        QSqlQueryModel *model = e.rechercherParCIN(cin);
+
+        if (model)
+        {
+            ui->tableView_rechcin->setModel(model);
+        }
+        else
+        {
+            // Gestion de l'erreur
+            qDebug()<< "Erreur lors de la recherche par CIN.";
+        }
+
+        QSqlQueryModel *result = e.rechercherParCIN(cin);
+
+        if (result != nullptr) {
+            // Check if the model is not empty
+            if (result->rowCount() > 0) {
+                // Display the result in the tableView_rechcin
+                ui->tableView_rechcin->setModel(result);
+                QMessageBox::information(nullptr, QObject::tr("Résultat de recherche"),
+                    QObject::tr("Recherche réussie.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+            } else {
+                QMessageBox::information(nullptr, QObject::tr("Résultat de recherche"),
+                    QObject::tr("Aucun employé trouvé avec le CIN : %1").arg(cin),
+                    QMessageBox::Cancel);
+            }
+
+        } else {
+            // Handle the case where the search failed (invalid CIN or not found)
+            QMessageBox::critical(nullptr, QObject::tr("Erreur de recherche"),
+                QObject::tr("Erreur lors de la recherche par CIN."),
+                QMessageBox::Cancel);
+        }
+
+}*/
+void MainWindow::on_pushButton_rechcin_clicked()
+{
+    employe e;
+
+    // Récupération du CIN depuis le lineEdit
+    int CIN = ui->lineEdit_rechcin->text().toInt();
+
+    // Appel de la fonction de recherche avec le CIN récupéré et la vue de table
+   e.rechercher(ui->tableView,CIN);
+}
+
+void MainWindow::on_pushButton_raf_clicked()
+{
+    ui->tableView->setModel(e.afficher());
+}
+
