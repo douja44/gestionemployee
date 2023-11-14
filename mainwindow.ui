@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1364</width>
+    <height>869</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,14 +17,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>26</x>
-      <y>39</y>
-      <width>651</width>
-      <height>401</height>
+      <x>20</x>
+      <y>20</y>
+      <width>1331</width>
+      <height>751</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_ajout">
      <attribute name="title">
@@ -55,16 +55,6 @@
        <rect>
         <x>130</x>
         <y>180</y>
-        <width>113</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_dateE">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>220</y>
         <width>113</width>
         <height>22</height>
        </rect>
@@ -194,8 +184,8 @@
      <widget class="QPushButton" name="pushButton_ajouter">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>310</y>
+        <x>130</x>
+        <y>390</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -207,8 +197,8 @@
      <widget class="QPushButton" name="pushButton_modifier">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>270</y>
+        <x>130</x>
+        <y>430</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -217,57 +207,11 @@
        <string>MODIFIER</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_consul">
-     <attribute name="title">
-      <string>Consulter les employées</string>
-     </attribute>
-     <widget class="QTableView" name="tableView">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>100</y>
-        <width>611</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_pdf">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>300</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>EXPORT PDF</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_supp">
-     <attribute name="title">
-      <string>Supprimer Employer</string>
-     </attribute>
-     <widget class="QLabel" name="label_cinsupp">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>100</y>
-        <width>56</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>CIN</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_supprimer">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>170</y>
+        <x>130</x>
+        <y>560</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -279,11 +223,109 @@
      <widget class="QLineEdit" name="lineEdit_cinsupp">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>100</y>
+        <x>120</x>
+        <y>520</y>
         <width>113</width>
         <height>22</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_cinsupp">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>520</y>
+        <width>56</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CIN</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_pdf">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>80</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EXPORT PDF</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>110</y>
+        <width>891</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>220</y>
+        <width>110</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>80</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Liste des Employés</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>60</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ajout d'un employé</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>490</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Supprimer un employé</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_stat">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>320</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
       </property>
      </widget>
     </widget>
@@ -294,7 +336,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1364</width>
      <height>26</height>
     </rect>
    </property>
