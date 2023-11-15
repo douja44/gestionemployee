@@ -56,6 +56,9 @@ private slots:
 
     void on_pushButton_raf_clicked();
 
+
+
+
 private:
     Ui::MainWindow *ui;
     employe e;

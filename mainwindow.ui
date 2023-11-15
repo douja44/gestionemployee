@@ -384,6 +384,19 @@
        </rect>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_raf">
+      <property name="geometry">
+       <rect>
+        <x>1030</x>
+        <y>80</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RAFFRAICHIR</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

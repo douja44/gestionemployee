@@ -2,6 +2,8 @@ QT       += core gui printsupport
 QT       += core gui sql
 QT += charts
 QT += widgets
+FORMS += login.ui
+
 
 
 
@@ -23,15 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     connection.cpp \
     employe.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     connection.h \
     employe.h \
+    login.h \
     mainwindow.h
 
 FORMS += \
+    login.ui \
     mainwindow.ui
 
 # Default rules for deployment.

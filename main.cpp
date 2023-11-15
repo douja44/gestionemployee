@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <iostream>
 #include "employe.h"
+#include "login.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,9 +16,11 @@ int main(int argc, char *argv[])
 
     Connection c;
     bool test=c.createconnect();
+    login l;
     MainWindow w;
+    l.show();
     if(test)
-    {w.show();
+    {
         QMessageBox::critical(nullptr, QObject::tr("database is open"),
                     QObject::tr("connection successful.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);

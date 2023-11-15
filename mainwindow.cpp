@@ -29,6 +29,10 @@ using namespace std;
 QT_CHARTS_USE_NAMESPACE
 
 
+#include "login.h"
+#include "ui_login.h"
+
+
 
 
 MainWindow::MainWindow(QWidget *parent)
