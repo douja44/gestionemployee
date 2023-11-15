@@ -23,10 +23,12 @@ public:
 
 private slots:
     void on_pushButton_login_clicked();
-
-
-
     void on_lineEdit_password_textChanged(const QString &text);
+
+
+
+
+
 
 private:
     Ui::login *ui;

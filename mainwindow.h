@@ -59,6 +59,8 @@ private slots:
 
 
 
+    void on_pushButton_chat_clicked();
+
 private:
     Ui::MainWindow *ui;
     employe e;

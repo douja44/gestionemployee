@@ -22,8 +22,9 @@ employe::employe()
     salaire=0;
     numT=0;
     abs=0;
+    mdp="";
 }
-employe::employe(QString nom,QString prenom,int CIN,int abs,QDate dateE,int numT,int salaire)
+employe::employe(QString nom,QString prenom,int CIN,int abs,QDate dateE,int numT,int salaire,QString mdp)
 {
     this->CIN=CIN;
     this->nom=nom;
@@ -32,6 +33,7 @@ employe::employe(QString nom,QString prenom,int CIN,int abs,QDate dateE,int numT
     this->abs=abs;
     this->dateE=dateE;
     this->numT=numT;
+    this->mdp=mdp;
 }
 
 
@@ -61,7 +63,7 @@ bool employe::ajouter()
     QString res3 = QString::number(salaire);
     QString res4 = QString::number(abs);
 
-    query.prepare("INSERT INTO employe (CIN, nom, prenom, dateE,numT, salaire, abs) VALUES (:CIN, :nom, :prenom, :dateE,:numT, :salaire, :abs)");
+    query.prepare("INSERT INTO employe (CIN, nom, prenom, dateE,numT, salaire, abs, mdp) VALUES (:CIN, :nom, :prenom, :dateE,:numT, :salaire, :abs, :mdp)");
     query.bindValue(":CIN", res);
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
@@ -69,7 +71,7 @@ bool employe::ajouter()
     query.bindValue(":numT",numT);
     query.bindValue(":salaire", salaire);
     query.bindValue(":abs", abs);
-
+    query.bindValue(":mdp", mdp);
     return query.exec();
 }
 
@@ -85,6 +87,7 @@ QSqlQueryModel *employe::afficher()
     model->setHeaderData(4,Qt::Horizontal,QObject::tr("numT"));
     model->setHeaderData(5,Qt::Horizontal,QObject::tr("salaire"));
     model->setHeaderData(6,Qt::Horizontal,QObject::tr("abs"));
+    model->setHeaderData(7,Qt::Horizontal,QObject::tr("mdp"));
     return model;
 }
 bool employe::supprimer(int CIN)
@@ -140,7 +143,7 @@ bool employe::modifier(int CIN)
     QString res3 = QString::number(salaire);
     QString res4 = QString::number(abs);
 
-    query.prepare("UPDATE employe SET nom = :nom, prenom = :prenom,numT=:numT, salaire = :salaire, dateE = :dateE, abs = :abs WHERE CIN = :CIN");
+    query.prepare("UPDATE employe SET nom = :nom, prenom = :prenom,numT=:numT, salaire = :salaire, dateE = :dateE, abs = :abs, mdp=:mdp WHERE CIN = :CIN");
     query.bindValue(":CIN", res);
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
@@ -148,6 +151,7 @@ bool employe::modifier(int CIN)
     query.bindValue(":numT",res2);
     query.bindValue(":salaire", res3);
     query.bindValue(":abs", res4);
+    query.bindValue(":mdp",mdp);
 
     return query.exec();
 }

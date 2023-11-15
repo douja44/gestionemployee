@@ -32,6 +32,10 @@ QT_CHARTS_USE_NAMESPACE
 #include "login.h"
 #include "ui_login.h"
 
+#include "chat.h"
+#include "ui_chat.h"
+
+
 
 
 
@@ -91,13 +95,14 @@ void MainWindow::on_pushButton_ajouter_clicked()
     qDebug();
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
+    QString mdp=ui->lineEdit_mdp->text();
     int CIN=ui->lineEdit_cin->text().toInt();
     int abs=ui->lineEdit_abs->text().toInt();
     QDate dateE=ui->dateEdit->date();//+++++++++++
     int numT=ui->lineEdit_numT->text().toInt();
     int salaire=ui->lineEdit_salaire->text().toInt();
 
-    employe e(nom,prenom,CIN,abs,dateE,numT,salaire);//++++++++++++++++++++++
+    employe e(nom,prenom,CIN,abs,dateE,numT,salaire,mdp);//++++++++++++++++++++++
 
     bool test=e.ajouter();
     if (test){
@@ -149,13 +154,14 @@ void MainWindow::on_pushButton_modifier_clicked()
     qDebug();
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
+    QString mdp=ui->lineEdit_mdp->text();
     int CIN=ui->lineEdit_cin->text().toInt();
     int abs=ui->lineEdit_abs->text().toInt();
     QDate dateE=ui->dateEdit->date();//+++++++++++++++++++
     int numT=ui->lineEdit_numT->text().toInt();
     int salaire=ui->lineEdit_salaire->text().toInt();
 
-    employe e(nom,prenom,CIN,abs,dateE,numT,salaire);//++++++++++++++++
+    employe e(nom,prenom,CIN,abs,dateE,numT,salaire,mdp);//++++++++++++++++
 
     bool test=e.modifier(CIN);
     if (test){
@@ -288,19 +294,34 @@ void MainWindow::afficherStatistiques() {
     chart->addSeries(series);
 
     // Créer l'axe X et définir le titre
-    QBarCategoryAxis *axisX = new QBarCategoryAxis();
-    chart->addAxis(axisX, Qt::AlignBottom);
-    series->attachAxis(axisX);
+        QBarCategoryAxis *axisX = new QBarCategoryAxis();
+        chart->addAxis(axisX, Qt::AlignBottom);
+        axisX->setTitleText("employées");
+        series->attachAxis(axisX);
+    /*
+        // Créer l'axe Y et définir le titre
+        QValueAxis *axisY = new QValueAxis();
+        axisY->setTitleText("Nombre d'absences");
+        chart->addAxis(axisY, Qt::AlignLeft);
+        series->attachAxis(axisY);
+    */
 
-    // Créer l'axe Y et définir le titre
-    QValueAxis *axisY = new QValueAxis();
-    axisY->setTitleText("Nombre d'absences");
-    chart->addAxis(axisY, Qt::AlignLeft);
-    series->attachAxis(axisY);
 
-    // Créer la vue du graphique
-    QChartView *chartView = new QChartView(chart);
-    chartView->setRenderHint(QPainter::Antialiasing);
+
+
+        // Créer l'axe Y et définir le titre
+        QValueAxis *axisY = new QValueAxis();
+        axisY->setTitleText("Nombre d'absences");
+
+        // Configurer l'axe pour afficher des étiquettes entières
+        axisY->setLabelFormat("%d");
+        axisY->setTickCount(10);  // Nombre de marques sur l'axe, ajustez selon vos besoins
+
+        chart->addAxis(axisY, Qt::AlignLeft);
+        series->attachAxis(axisY);
+        // Créer la vue du graphique
+        QChartView *chartView = new QChartView(chart);
+        chartView->setRenderHint(QPainter::Antialiasing);
 
     // Créer une nouvelle fenêtre pour afficher le graphique
     QMainWindow *statsWindow = new QMainWindow();
@@ -423,3 +444,10 @@ void MainWindow::on_pushButton_raf_clicked()
     ui->tableView->setModel(e.afficher());
 }
 
+
+void MainWindow::on_pushButton_chat_clicked()
+{
+    /*this->hide();*/
+    chat *auth = new chat;
+    auth->show();
+}

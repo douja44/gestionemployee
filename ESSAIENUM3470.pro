@@ -2,7 +2,9 @@ QT       += core gui printsupport
 QT       += core gui sql
 QT += charts
 QT += widgets
-FORMS += login.ui
+QT += core gui network
+FORMS += login.ui \
+    chat.ui
 
 
 
@@ -23,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chat.cpp \
     connection.cpp \
     employe.cpp \
     login.cpp \
@@ -30,6 +33,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    chat.h \
     connection.h \
     employe.h \
     login.h \

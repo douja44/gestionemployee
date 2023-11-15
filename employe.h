@@ -12,7 +12,7 @@ class employe
 
 public:
     employe();
-    employe(QString,QString,int,int,QDate,int,int);
+    employe(QString,QString,int,int,QDate,int,int,QString);
 
     QDate dateE;
 
@@ -30,7 +30,7 @@ public:
     void setdateE(QDate d){dateE=d;}
     void setnumT(int num){numT=num;}
     void setabs(int a){abs=a;}
-    QString nom,prenom;
+    QString nom,prenom,mdp;
     int CIN,salaire,numT,abs;
 
 
