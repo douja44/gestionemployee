@@ -30,6 +30,8 @@ private slots:
 
 
 
+    void on_pushButton_oublier_clicked();
+
 private:
     Ui::login *ui;
 };

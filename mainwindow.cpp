@@ -32,8 +32,7 @@ QT_CHARTS_USE_NAMESPACE
 #include "login.h"
 #include "ui_login.h"
 
-#include "chat.h"
-#include "ui_chat.h"
+
 
 
 
@@ -48,7 +47,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_cin->setValidator(new QIntValidator(0,99999999,this));
     ui->lineEdit_cinsupp->setValidator(new QIntValidator(0,99999999,this));
     ui->lineEdit_abs->setValidator(new QIntValidator(0,999,this));
-    ui->lineEdit_numT->setValidator(new QIntValidator(0,99999999,this));
     ui->lineEdit_salaire->setValidator(new QIntValidator(0,99999,this));
     ui->lineEdit_nom->setMaxLength(8);
     ui->lineEdit_nom->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z_]{1,8}$"), this));
@@ -80,6 +78,13 @@ MainWindow::MainWindow(QWidget *parent)
         // Positionnez et stylisez le bouton selon vos besoins
 
 
+
+
+
+
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -96,13 +101,12 @@ void MainWindow::on_pushButton_ajouter_clicked()
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
     QString mdp=ui->lineEdit_mdp->text();
-    int CIN=ui->lineEdit_cin->text().toInt();
+    int CINPP=ui->lineEdit_cin->text().toInt();
     int abs=ui->lineEdit_abs->text().toInt();
     QDate dateE=ui->dateEdit->date();//+++++++++++
-    int numT=ui->lineEdit_numT->text().toInt();
     int salaire=ui->lineEdit_salaire->text().toInt();
 
-    employe e(nom,prenom,CIN,abs,dateE,numT,salaire,mdp);//++++++++++++++++++++++
+    employe e(nom,prenom,CINPP,abs,dateE,salaire,mdp);//++++++++++++++++++++++
 
     bool test=e.ajouter();
     if (test){
@@ -158,10 +162,9 @@ void MainWindow::on_pushButton_modifier_clicked()
     int CIN=ui->lineEdit_cin->text().toInt();
     int abs=ui->lineEdit_abs->text().toInt();
     QDate dateE=ui->dateEdit->date();//+++++++++++++++++++
-    int numT=ui->lineEdit_numT->text().toInt();
     int salaire=ui->lineEdit_salaire->text().toInt();
 
-    employe e(nom,prenom,CIN,abs,dateE,numT,salaire,mdp);//++++++++++++++++
+    employe e(nom,prenom,CIN,abs,dateE,salaire,mdp);//++++++++++++++++
 
     bool test=e.modifier(CIN);
     if (test){
@@ -428,6 +431,9 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
         }
 
 }*/
+
+/*QPixmap pixmap("C:/Users/Administrateur/Desktop/ter/arouf/image/rechh.jpg");*/
+
 void MainWindow::on_pushButton_rechcin_clicked()
 {
     employe e;
@@ -437,6 +443,8 @@ void MainWindow::on_pushButton_rechcin_clicked()
 
     // Appel de la fonction de recherche avec le CIN récupéré et la vue de table
    e.rechercher(ui->tableView,CIN);
+
+
 }
 
 void MainWindow::on_pushButton_raf_clicked()
@@ -445,9 +453,9 @@ void MainWindow::on_pushButton_raf_clicked()
 }
 
 
-void MainWindow::on_pushButton_chat_clicked()
+void MainWindow::on_pushButton_deconect_clicked()
 {
-    /*this->hide();*/
-    chat *auth = new chat;
+    this->hide();
+    login *auth = new login;
     auth->show();
 }

@@ -12,7 +12,7 @@ class employe
 
 public:
     employe();
-    employe(QString,QString,int,int,QDate,int,int,QString);
+    employe(QString,QString,int,int,QDate,int,QString);
 
     QDate dateE;
 
@@ -21,17 +21,15 @@ public:
     int getcin(){return CIN;}
     int getsalaire(){return salaire;}
     QDate getdateE(){return dateE;}
-    int getnumT(){return numT;}
     int getabs(){return abs;}
     void setcin(int nvcin){CIN=nvcin;}
     void setnom(QString n){nom=n;}
     void setprenom(QString p){prenom=p;}
     void setsalaire(int s){salaire=s;}
     void setdateE(QDate d){dateE=d;}
-    void setnumT(int num){numT=num;}
     void setabs(int a){abs=a;}
     QString nom,prenom,mdp;
-    int CIN,salaire,numT,abs;
+    int CIN,salaire,abs;
 
 
 
@@ -48,7 +46,7 @@ public:
     void rechercher(QTableView *tableView, int CIN);
 
 
-    
+
 };
 
 #endif // EMPLOYE_H

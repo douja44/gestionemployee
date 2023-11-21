@@ -20,19 +20,17 @@ employe::employe()
     nom="";
     prenom="";
     salaire=0;
-    numT=0;
     abs=0;
     mdp="";
 }
-employe::employe(QString nom,QString prenom,int CIN,int abs,QDate dateE,int numT,int salaire,QString mdp)
+employe::employe(QString nom,QString prenom,int CINPP,int abs,QDate dateE,int salaire,QString mdp)
 {
-    this->CIN=CIN;
+    this->CIN=CINPP;
     this->nom=nom;
     this->prenom=prenom;
     this->salaire=salaire;
     this->abs=abs;
     this->dateE=dateE;
-    this->numT=numT;
     this->mdp=mdp;
 }
 
@@ -59,7 +57,6 @@ bool employe::ajouter()
 
     // Si l'employé n'existe pas, insérez-le
 
-    QString res2= QString::number(numT);
     QString res3 = QString::number(salaire);
     QString res4 = QString::number(abs);
 
@@ -68,7 +65,6 @@ bool employe::ajouter()
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
     query.bindValue(":dateE", dateE);
-    query.bindValue(":numT",numT);
     query.bindValue(":salaire", salaire);
     query.bindValue(":abs", abs);
     query.bindValue(":mdp", mdp);
@@ -84,10 +80,9 @@ QSqlQueryModel *employe::afficher()
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
     model->setHeaderData(3,Qt::Horizontal,QObject::tr("dateE"));//+++++++++++
-    model->setHeaderData(4,Qt::Horizontal,QObject::tr("numT"));
-    model->setHeaderData(5,Qt::Horizontal,QObject::tr("salaire"));
-    model->setHeaderData(6,Qt::Horizontal,QObject::tr("abs"));
-    model->setHeaderData(7,Qt::Horizontal,QObject::tr("mdp"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("salaire"));
+    model->setHeaderData(5,Qt::Horizontal,QObject::tr("abs"));
+    model->setHeaderData(6,Qt::Horizontal,QObject::tr("mdp"));
     return model;
 }
 bool employe::supprimer(int CIN)
@@ -139,7 +134,6 @@ bool employe::modifier(int CIN)
 
     // Si l'employé existe, mettez à jour les données
 
-    QString res2= QString::number(numT);
     QString res3 = QString::number(salaire);
     QString res4 = QString::number(abs);
 
@@ -148,7 +142,6 @@ bool employe::modifier(int CIN)
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
     query.bindValue(":dateE", dateE);
-    query.bindValue(":numT",res2);
     query.bindValue(":salaire", res3);
     query.bindValue(":abs", res4);
     query.bindValue(":mdp",mdp);

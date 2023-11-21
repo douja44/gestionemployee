@@ -2,6 +2,7 @@
 #include "login.h"
 #include "mainwindow.h"
 #include "employe.h"
+#include "oublier.h"
 #include <QMainWindow>
 #include <QMessageBox>
 
@@ -27,15 +28,15 @@ void login::on_pushButton_login_clicked()
     QSqlQuery query;
     query.prepare("SELECT * FROM employe WHERE CIN=:CIN");
     query.bindValue(":CIN",CIN);
-    query.prepare("SELECT * FROM employe WHERE mdp=:mdp");
-    query.bindValue(":mdp",mdp);
-    if (query.exec() && query.next() && mdp==mdp) {
+
+    if (query.exec() && query.next() && mdp=="smartdelivery") {
         QMessageBox::information(nullptr, QObject::tr("ok"),
                     QObject::tr("login avec success.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
-        this->hide();
+                this->hide();
                 MainWindow *auth = new MainWindow;
                 auth->show();
+
     } else {
         QMessageBox::critical(nullptr, QObject::tr("not ok"),
                     QObject::tr(" please enter valid id or password.\n"
@@ -49,4 +50,11 @@ void login::on_pushButton_login_clicked()
 void login::on_lineEdit_password_textChanged(const QString &text)
 {
     ui->lineEdit_password->setEchoMode(QLineEdit::Password);
+}
+
+void login::on_pushButton_oublier_clicked()
+{
+
+    oublier *auth = new oublier;
+    auth->show();
 }

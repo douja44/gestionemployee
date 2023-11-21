@@ -4,7 +4,7 @@ QT += charts
 QT += widgets
 QT += core gui network
 FORMS += login.ui \
-    chat.ui
+    oublier.ui
 
 
 
@@ -25,19 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    chat.cpp \
     connection.cpp \
     employe.cpp \
     login.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    oublier.cpp
 
 HEADERS += \
-    chat.h \
     connection.h \
     employe.h \
     login.h \
-    mainwindow.h
+    mainwindow.h \
+    oublier.h
 
 FORMS += \
     login.ui \
@@ -47,3 +47,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    IMAGE.qrc \
+    IMAGE.qrc

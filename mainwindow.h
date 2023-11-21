@@ -25,6 +25,9 @@ public:
 
     ~MainWindow();
 
+
+    QString cheminImage;
+
 private slots:
     void on_pushButton_ajouter_clicked();
 
@@ -59,7 +62,9 @@ private slots:
 
 
 
-    void on_pushButton_chat_clicked();
+
+
+    void on_pushButton_deconect_clicked();
 
 private:
     Ui::MainWindow *ui;
